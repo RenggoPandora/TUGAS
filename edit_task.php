@@ -6,10 +6,10 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $lihat_task = $task->lihat_task($id);
     if (!$lihat_task) {
-        header('location:AllTask.php');
+        header('location:index.php');
     }
 } else {
-    header('location:AllTask.php');
+    header('location:index.php');
 }
 ?>
 
@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
                         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Masukkan Description" required><?= $lihat_task['description'] ?></textarea>
                     </div>
                     <button type="submit" name="edit_task" class="btn btn-primary">Simpan</button>
-                    <a href="AllTask.php" class="btn btn-secondary">Batal</a>
+                    <a href="index.php" class="btn btn-secondary">Batal</a>
                 </form>
             </div>
         </div>

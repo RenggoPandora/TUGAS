@@ -18,18 +18,14 @@ class User {
     public function login($username, $email) {
         $query = "SELECT * FROM users WHERE username = :username AND email = :email";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(":username", $username);
-        $stmt->bindParam(":email", $email);
+        $stmt->bindValue(":username", $username);
+        $stmt->bindValue(":email", $email);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($result) {
-            session_start();
-            $_SESSION['username'] = $result['username'];
-            header("Location: AllTask.php");
-            exit();
+    
+        if ($stmt->rowCount() > 0) {
+            return true;
         } else {
-            return "Username atau email salah.";
+            return false;
         }
     }
 }

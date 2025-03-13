@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $task->update_status($id, $status);
 
     // Redirect kembali ke halaman utama
-    header("Location: AllTask.php");
+    header("Location: index.php");
     exit();
 }
 ?>

@@ -1,4 +1,13 @@
 <?php
+session_start(); // Mulai session
+
+// Periksa apakah user sudah login berdasarkan session username dan email
+if (!isset($_SESSION['username']) || !isset($_SESSION['email'])) {
+    $_SESSION['error'] = "Anda harus login terlebih dahulu!";
+    header("Location: login.php");
+    exit();
+}
+
 require 'class/Task.php';
 $task = new Task();
 $lihat_task = $task->tampil_task();
@@ -21,9 +30,18 @@ $no = 1;
 <body>
     <div class="container mt-5">
         <h2 class="text-center mb-4">Task</h2>
+        
+        <!-- Tampilkan pesan sukses jika ada -->
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-success"><?= $_SESSION['message'] ?></div>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
+
         <div class="card">
             <div class="card-body">
                 <a href="tambah_task.php" class="btn btn-primary mb-3">Tambah Task</a>
+                <a href="logout.php" class="btn btn-danger mb-3 float-right">Logout</a>
+                
                 <table id="myTable" class="table table-striped">
                     <thead>
                         <tr>
@@ -39,9 +57,9 @@ $no = 1;
                         <?php foreach ($lihat_task as $value) : ?>
                             <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $value['title'] ?></td>
-                                <td><?= $value['description'] ?></td>
-                                <td><?= $value['created_at'] ?></td>
+                                <td><?= htmlspecialchars($value['title']) ?></td>
+                                <td><?= htmlspecialchars($value['description']) ?></td>
+                                <td><?= htmlspecialchars($value['created_at']) ?></td>
                                 <td>
                                     <!-- Form untuk mengubah status -->
                                     <form action="update_status.php" method="POST">
