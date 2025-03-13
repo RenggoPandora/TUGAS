@@ -24,7 +24,7 @@
                         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Masukkan Description" required></textarea>
                     </div>
                     <button type="submit" name="tambah_task" class="btn btn-primary">Tambah</button>
-                    <a href="index_task.php" class="btn btn-secondary">Batal</a>
+                    <a href="AllTask.php" class="btn btn-secondary">Batal</a>
                 </form>
             </div>
         </div>

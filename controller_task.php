@@ -6,7 +6,7 @@ if (isset($_POST['tambah_task'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $task->tambah_task($title, $description);
-    header('location:index_task.php');
+    header('location:AllTask.php');
 }
 
 if (isset($_POST['edit_task'])) {
@@ -14,11 +14,11 @@ if (isset($_POST['edit_task'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $task->edit_task($id, $title, $description);
-    header('location:index_task.php');
+    header('location:AllTask.php');
 }
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $task->hapus_task($id);
-    header('location:index_task.php');
+    header('location:AllTask.php');
 }

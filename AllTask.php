@@ -30,6 +30,7 @@ $no = 1;
                             <th>No</th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Created at</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -41,6 +42,7 @@ $no = 1;
                                 <td><?= $no++ ?></td>
                                 <td><?= $value['title'] ?></td>
                                 <td><?= $value['description'] ?></td>
+                                <td><?= $value['created_at'] ?></td>
                                 <td>
                                     <a href="edit_task.php?id=<?= $value['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
                                     <a href="controller_task.php?id=<?= $value['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
