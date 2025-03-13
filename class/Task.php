@@ -33,5 +33,15 @@ class Task{
             ':id' => $id
         ]);
     }
+
+    public function update_status($id, $status)
+    {
+        $query = "UPDATE tasks SET status = :status WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+
 }
 ?>

@@ -22,3 +22,10 @@ if (isset($_GET['id'])) {
     $task->hapus_task($id);
     header('location:AllTask.php');
 }
+
+if (isset($_POST['update_status'])) {
+    $id = $_POST['id'];
+    $status = $_POST['status'];
+    $task->update_status($id, $status);
+    header('location:AllTask.php');
+}
